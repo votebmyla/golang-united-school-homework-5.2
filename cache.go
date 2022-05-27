@@ -13,7 +13,7 @@ type KeyValue struct {
 }
 
 func NewCache() Cache {
-	x := Cache{}
+	var x Cache
 	return Cache{x.KeyVal}
 }
 
