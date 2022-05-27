@@ -16,12 +16,19 @@ func NewCache() Cache {
 }
 
 func (c Cache) Get(key string) (string, bool) {
-	for k, v := range c.KeyVal {
-		if k == key && v.Deadline.After(time.Now()) {
-			return v.Value, true
-		}
+	// for k, v := range c.KeyVal {
+	// 	if k == key && v.Deadline.After(time.Now()) {
+	// 		return v.Value, true
+	// 	}
+	// }
+
+	v, ok := c.KeyVal[key]
+
+	if v.Deadline.IsZero() {
+		return v.Value, ok
 	}
-	return "", false
+
+	return v.Value, ok
 }
 
 func (c Cache) Put(key, value string) {
