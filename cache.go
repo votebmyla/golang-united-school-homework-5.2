@@ -3,7 +3,7 @@ package cache
 import "time"
 
 type Cache struct {
-	KeyVal *[]KeyValue
+	KeyVal []KeyValue
 }
 
 type KeyValue struct {
