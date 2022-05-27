@@ -11,7 +11,7 @@ type KeyValue struct {
 	Deadline time.Time
 }
 
-func NewCache(c Cache) Cache {
+func NewCache() Cache {
 	// cache := Cache{KeyVal: make(map[string]KeyValue)}
 	return Cache{KeyVal: map[string]KeyValue{}}
 }
