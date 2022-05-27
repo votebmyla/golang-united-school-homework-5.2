@@ -27,8 +27,11 @@ func (c Cache) Get(key string) (string, bool) {
 	if v.Deadline.IsZero() {
 		return v.Value, ok
 	}
+	if time.Now().Before(v.Deadline) {
+		return v.Value, ok
+	}
 
-	return v.Value, ok
+	return "", false
 }
 
 func (c Cache) Put(key, value string) {
