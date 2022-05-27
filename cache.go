@@ -12,8 +12,9 @@ type KeyValue struct {
 	Deadline time.Time
 }
 
-func NewCache(c Cache) Cache {
-	return Cache{c.KeyVal}
+func NewCache() Cache {
+	x := Cache{}
+	return Cache{x.KeyVal}
 }
 
 func (c *Cache) Get(key string) (string, bool) {
