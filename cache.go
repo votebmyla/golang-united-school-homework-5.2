@@ -3,7 +3,7 @@ package cache
 import "time"
 
 type Cache struct {
-	KeyVal map[string]KeyValue
+	KeyVal map[string]*KeyValue
 }
 
 type KeyValue struct {
@@ -12,7 +12,8 @@ type KeyValue struct {
 }
 
 func NewCache() Cache {
-	return Cache{KeyVal: map[string]KeyValue{}}
+	c := Cache{KeyVal: make(map[string]*KeyValue)}
+	return c
 }
 
 func (c Cache) Get(key string) (string, bool) {
@@ -25,7 +26,7 @@ func (c Cache) Get(key string) (string, bool) {
 }
 
 func (c Cache) Put(key, value string) {
-	c.KeyVal[key] = KeyValue{value, time.Time{}}
+	c.KeyVal[key] = &KeyValue{value, time.Time{}}
 }
 
 func (c Cache) Keys() []string {
@@ -39,5 +40,5 @@ func (c Cache) Keys() []string {
 }
 
 func (c Cache) PutTill(key, value string, deadline time.Time) {
-	c.KeyVal[key] = KeyValue{value, deadline}
+	c.KeyVal[key] = &KeyValue{value, deadline}
 }
