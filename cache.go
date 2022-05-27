@@ -26,14 +26,7 @@ func (c Cache) Get(key string) (string, bool) {
 }
 
 func (c Cache) Put(key, value string) {
-	deadline := time.Time{}
-	for k := range c.KeyVal {
-		if k == key {
-			c.KeyVal[key] = KeyValue{value, deadline}
-			return
-		}
-	}
-	c.KeyVal[key] = KeyValue{value, deadline}
+	c.KeyVal[key] = KeyValue{value, time.Time{}}
 }
 
 func (c Cache) Keys() []string {
