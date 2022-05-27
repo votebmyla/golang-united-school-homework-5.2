@@ -13,7 +13,7 @@ type KeyValue struct {
 }
 
 func NewCache(c Cache) Cache {
-	return Cache{}
+	return Cache{c.KeyVal}
 }
 
 func (c *Cache) Get(key string) (string, bool) {
