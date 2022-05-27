@@ -12,8 +12,8 @@ type KeyValue struct {
 }
 
 func NewCache() Cache {
-	// cache := Cache{KeyVal: make(map[string]KeyValue)}
-	return Cache{KeyVal: map[string]KeyValue{}}
+	cache := Cache{KeyVal: make(map[string]KeyValue)}
+	return cache
 }
 
 func (c *Cache) Get(key string) (string, bool) {
